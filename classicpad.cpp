@@ -21,6 +21,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         SetFocus(hEdit);
         return 0;
     }
+    case WM_ACTIVATE: {
+        if (wParam != WA_INACTIVE) {
+            SetFocus(hEdit);
+        }
+        break;
+    }
     case WM_COMMAND: {
         switch (LOWORD(wParam)) {
         case 100: { // Open
