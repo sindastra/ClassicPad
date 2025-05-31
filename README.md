@@ -26,7 +26,9 @@ So go ahead, open ClassicPad™ and enjoy the simplicity of yesterday — ironic
 ### Compile
 
 ```bash
-i686-w64-mingw32-g++ classicpad.cpp -o classicpad.exe -lcomdlg32 -luser32 -lgdi32 -Wl,-subsystem,windows -static -static-libgcc -static-libstdc++
+mkdir build && cd build
+cmake ..
+cmake --build .
 ```
 
 ### Disclaimer
