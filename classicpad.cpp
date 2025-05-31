@@ -8,13 +8,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
     case WM_CREATE: {
         hEdit = CreateWindowEx(0, "EDIT", "",
-            WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_HSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL,
+            WS_CHILD | WS_VISIBLE | WS_VSCROLL | WS_HSCROLL | ES_MULTILINE |
+            ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_TABSTOP,
             0, 0, 0, 0, hwnd, (HMENU)1, GetModuleHandle(NULL), NULL);
         break;
     }
     case WM_SIZE: {
         MoveWindow(hEdit, 0, 0, LOWORD(lParam), HIWORD(lParam), TRUE);
         break;
+    }
+    case WM_SETFOCUS: {
+        SetFocus(hEdit);
+        return 0;
     }
     case WM_COMMAND: {
         switch (LOWORD(wParam)) {
